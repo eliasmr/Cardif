@@ -1,6 +1,5 @@
 import { Component, Output, OnInit,EventEmitter  } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { InformacionAgendaService } from '../service/core/informacion-agenda.service';
 import { Agenda } from '../service/model/Agenda';
 import { Router } from '@angular/router';
 import { Sexo } from '../service/model/Sexo';
@@ -17,7 +16,7 @@ export class CreaAgendaComponent implements OnInit {
   public ltsAgenda: Array<Agenda> = []
   public ltsSexo : Array<Sexo> = []
 
-  constructor(private router: Router, public activeModal: NgbActiveModal, private service: InformacionAgendaService) { }
+  constructor(private router: Router, public activeModal: NgbActiveModal) { }
 
   ngOnInit(): void {
     this.ltsSexo = [
