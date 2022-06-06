@@ -1,0 +1,97 @@
+<div class="modal-header">
+    <h4 class="modal-title">Crear Agenda</h4>
+    <button type="button" class="close" aria-label="Close" #closebutton (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form>
+        <div class="form-group">
+          <label for="formNombreInput" class="form-label">Nombres</label>
+          <input type="text"
+          class="form-control" 
+          id="formNombreInput" 
+          placeholder="Ingrese su nombres"
+          [(ngModel)]="agenda.nombres" 
+          name="formNombreInput"
+          onkeypress='return  (event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122) || event.keyCode == 32'
+          >
+          <div *ngIf="obligatorio && (agenda.nombres === undefined || this.agenda.nombres === '')">
+            <label for="formNombreInput" class="form-label" style="color: red">Los nombres son obligatorios!</label>
+          </div>
+          <div *ngIf="agenda.nombres !== undefined && agenda.nombres !== ''">
+            <label for="formNombreInput" class="form-label" style="color: green">Correcto !</label>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="formApellidoInput">Apellidos</label>
+          <input type="text" 
+            class="form-control" 
+            id="formApellidoInput" 
+            placeholder="Ingrese su apellidos"
+            [(ngModel)]="agenda.apellidos" 
+            name="formApellidoInput"
+            onkeypress='return  (event.keyCode >= 65 && event.keyCode <= 90) || (event.keyCode >= 97 && event.keyCode <= 122) || event.keyCode == 32'
+            >
+            <div *ngIf="obligatorio && (agenda.apellidos === undefined || this.agenda.apellidos === '')">
+              <label for="formNombreInput" class="form-label" style="color: red">Los apellidos son obligatorios!</label>
+            </div>
+            <div *ngIf="agenda.apellidos !== undefined && agenda.apellidos !== ''">
+              <label for="formNombreInput" class="form-label" style="color: green">Correcto !</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="formCedulaInput">Cedula</label>
+            <input type="text" 
+            class="form-control" 
+            id="formCedulaInput" 
+            placeholder="Ingrese su cedula"
+            [(ngModel)]="agenda.cedula"
+            name="formCedulaInput"
+            onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+            >
+            <div *ngIf="obligatorio && (agenda.cedula === undefined || this.agenda.cedula === '')">
+              <label for="formNombreInput" class="form-label" style="color: red">La cedula es obligatoria!</label>
+            </div>
+            <div *ngIf="agenda.cedula !== undefined && agenda.cedula !== ''">
+              <label for="formNombreInput" class="form-label" style="color: green">Correcto !</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label>Genero</label>
+            <select class="form-select" id="sexo" aria-label="Selecione el genero" [(ngModel)]="agenda.sexo" name="sexo">
+                  <option *ngFor="let sexo of ltsSexo"
+                  [ngValue]="sexo" selected>
+                  {{sexo.nombre}}
+                </option>
+              </select>
+              <div *ngIf="obligatorio && (agenda.sexo === undefined || agenda.sexo.nombre === '')">
+                <label for="formNombreInput" class="form-label" style="color: red">El sexo es obligatorio!</label>
+              </div>
+              <div *ngIf="agenda.sexo !== undefined && agenda.sexo.nombre !== ''">
+                <label for="formNombreInput" class="form-label" style="color: green">Correcto !</label>
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="formEdadInput">Edad</label>
+            <input type="text" 
+            class="form-control" 
+            id="formEdadInput" 
+            placeholder="Ingrese su edad"
+            [(ngModel)]="agenda.edad" 
+            name="formEdadInput"
+            onkeypress='return event.charCode >= 48 && event.charCode <= 57'
+            >
+            <div *ngIf="obligatorio  && (agenda.edad === undefined || agenda.edad === '')">
+              <label for="formNombreInput" class="form-label" style="color: red">La edad es obligatoria!</label>
+            </div>
+            <div *ngIf="agenda.edad !== undefined && agenda.edad !=='' ">
+              <label for="formNombreInput" class="form-label" style="color: green">Correcto !</label>
+            </div>
+        </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-lg btn-outline-primary"   id="closeModal" (click)="guardarAgenda()">Guardar</button>
+    <button type="button" class="btn btn-lg btn-outline-dark" (click)="activeModal.close('Close click')">Cerrar</button>
+  </div>

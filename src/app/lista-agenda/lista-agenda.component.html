@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="border border-bottom-1 mt-4 d-flex justify-content-between align-items-center">
+            <div class="p-2">
+                <img src="assets/img/cardif.png" class="img-rounded" alt="cardif">
+            </div>
+            <div class="p-2">
+                <blockquote class="blockquote">
+                    <h1>
+                        <p class="mb-0">Agenda Personas</p>
+                    </h1>
+                  </blockquote>
+            </div>
+            <div class="p-2">
+                <button class="btn btn-lg btn-outline-primary" (click)="btnGuardaAgenda()">Agregar</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="border border-bottom-1 mt-4">
+            <table class="table table-bordered mt-3">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Cedula</th>
+                    <th scope="col">Genero</th>
+                    <th scope="col">Edad</th>
+                  </tr>
+                </thead>
+                <tbody *ngFor="let agenda of ltsAgenda">
+                  <tr>
+                    <th scope="row">{{agenda.id}}</th>
+                    <td>{{agenda.nombres}}</td>
+                    <td>{{agenda.apellidos}}</td>
+                    <td>{{agenda.cedula}}</td>
+                    <td>{{agenda.sexo.nombre}}</td>
+                    <td>{{agenda.edad}}</td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+ </div>
